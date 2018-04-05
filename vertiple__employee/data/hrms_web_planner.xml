@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="hrms_planner">
+        <t t-call="web_planner.pages">
+            <t t-call="web_planner.page">
+                <t t-set="page_title">Welcome</t>
+                <t t-set="hide_mark_as_done" t-value="True"/>
+                <div class="o_planner_intro">
+                  	<p>
+                    	We designed Vertiple in such a way people can use payroll or HRMS or both payroll and HRMS which makes you hassles usage of application.
+                  	</p>
+                  </div>
+            </t>
+
+
+            <t t-call="web_planner.category">
+            	<t t-set="menu_categorytitle">Begins From Here</t>
+                <t t-set="menu_categoryclasses" t-value="'fa-hourglass-start'"/>
+                <t t-call="web_planner.page">
+                    <t t-set="page_title">Vertiple HRMS</t>
+                </t>
+
+				<t t-call="web_planner.page">
+                    <t t-set="page_title">Create An Organisation</t>
+                    <p class="text-muted">
+                        You can now create system for your company. Mention your details below.
+                    </p>
+                    <div class="row">
+                    	<div class="panel-body">
+                    		<li><a t-att-href="prepare_backend_url('base.action_res_company_form','form')">Create Company</a></li>
+                        <p class="text-muted">
+                            Creating a company includes some basic information of a company such as Company name, Email, Address, Currency etc. 
+                        </p>
+                            <li><a t-att-href="prepare_backend_url('hr.open_module_tree_department','form')">Create Departments</a></li>
+                        <p class="text-muted">
+                            Department includes Department name, Parent Department Company name etc. 
+                        </p>
+                            <li><a t-att-href="prepare_backend_url('hr.action_hr_job','form')">Create Job Titles</a></li>
+                        <p class="text-muted">
+                            Job Title includes Job Title, Job description etc.  
+                        </p>
+                            <li><a t-att-href="prepare_backend_url('resource.action_resource_calendar_form','form')">Create Workshifts</a></li>
+                        <p class="text-muted">
+                            Workshifts includes working hours, Shift timings etc.  
+                        </p>
+                    </div>
+                    </div>
+                </t>
+
+                <t t-call="web_planner.category">
+                <t t-call="web_planner.page">
+                    <t t-set="page_title">Vertiple Payroll</t>
+                </t>
+                    <t t-call="web_planner.page">
+                    <t t-set="page_title">Create Payroll System</t>
+                        <div class="row">
+                        <div class="panel-body">
+
+                            <li><a t-att-href="prepare_backend_url('hr_contract.action_hr_contract','form')">
+                            Create Contracts</a></li>
+                            <p class="text-muted">
+                            Contracts can be created individually for employees. Inorder to run the payslip, contract must be specified for an employee.
+                            </p>
+
+                            <li><a t-att-href="prepare_backend_url('resource.action_resource_calendar_form','form')">Create Workshifts</a></li>
+                            <p class="text-muted">
+                            Workshifts includes working hours, Shift timings etc.
+                            </p>
+
+                            <li><a t-att-href="prepare_backend_url('hr_payroll.action_hr_salary_rule_category','form')">Create Your salary rule categories</a></li>
+                            <p class="text-muted">
+                            salary rules Categories includes Basic, Gross, Net, Allowances, Deductions etc.
+                            </p>
+
+                            <li><a t-att-href="prepare_backend_url('hr_payroll.action_salary_rule_form','form')">Create Your salary rules</a></li>
+                            <p class="text-muted">
+                            salary rules includes Basic, Gross, Net, HRA etc accoriding to your salary rule categories.
+                            you can configure your salary rules based on the condition you have.
+                            </p>
+
+                            <li><a t-att-href="prepare_backend_url('hr_payroll.action_view_hr_payroll_structure_list_form','form')">Create Your salary structure</a></li>
+                            <p class="text-muted">
+                            You can add salary rules which are configured in order to create a salary structure. 
+                            salary structure includes Basic, Gross, Net, HRA etc per record.
+                            </p>
+
+                            <li><a t-att-href="prepare_backend_url('hr_payroll.action_contribution_register_form','form')">
+                            Create Contribution Registers</a></li>
+                            <p class="text-muted">
+                            you can now Create Contribution Registers
+                            </p>
+
+                            
+                        </div>
+                    </div>
+                </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="planner_hrms" model="web.planner">
+        <field name="name">Hrms Planner</field>
+        <field name="view_id" ref="hrms_planner"/>
+        <field name="menu_id" ref="hr.menu_hr_root"/>
+        <field name="planner_application">planner_hrms</field>
+        <field name="tooltip_planner"><![CDATA[
+            Plan your vertiple strategy: objectives, Takes, KPI's, and much more!
+            ]]>
+        </field>
+    </record>
+
+</odoo>
