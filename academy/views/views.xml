@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="teachers_form">
+    <field name="name">academy.form</field>
+    <field name="model">academy.teachers</field>
+    <field name="arch" type="xml">
+      <form string="Teachers">
+          <sheet>
+              <group>       
+                  <field name='name'/>
+             </group>
+          </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="teachers_form_action">
+    <field name="name">academy teachers</field>
+    <field name="res_model">academy.teachers</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Create </p>
+    </field>
+  </record>
+
+  <menuitem id="teachers-menu" name="Teachers" 
+      parent="hr.menu_human_resources_configuration"
+      action="teachers_form_action"
+      sequence="100"/>
+  </data>
+</odoo>
